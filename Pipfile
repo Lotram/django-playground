@@ -3,25 +3,30 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
-[dev-packages]
+[packages]
 bandit = "*"
 black = {extras = ["jupyter"], version = "*"}
+django = "*"
 django-extensions = "*"
+django-filter = "~=2.4"
 django-stubs = "*"
+djangorestframework = "*"
+djangorestframework-stubs = "*"
+faker = "*"
 flake8 = "*"
+gunicorn = "*"
 ipdb = "*"
 ipython = "*"
-mypy = "*"
 isort = "*"
-
-[packages]
-django = "*"
-psycopg2-binary = "*"
-gunicorn = "*"
 jupyter = "*"
-faker = "*"
 more-itertools = "*"
+mypy = "*"
+psycopg2-binary = "*"
+pytest = "*"
+pytest-django = "*"
+sentry-sdk = "*"
 tqdm = "*"
+pygraphviz = "*"
 
 [requires]
 python_version = "3.10"

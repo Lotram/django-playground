@@ -1,0 +1,1 @@
+update pg_index set indisvalid = %s where indexrelid = %s::regclass

@@ -33,7 +33,7 @@ class BulkCreator(Generic[ModelType]):
         self._total = total
         self.keep_results = keep_results
         self.batch_size = batch_size
-        self._unit = unit or self.model.__name__.lower()
+        self._unit = unit or f" {self.model.__name__.lower()} "
         self._ignore_conflicts = ignore_conflicts
 
         assert batch_size > 0
@@ -63,7 +63,7 @@ class BulkCreator(Generic[ModelType]):
         with tqdm(
             total=self._total,
             unit=self._unit,
-            disable=self._total is None or self._total < self.batch_size,
+            # disable=self._total is None or self._total < self.batch_size,
         ) as progress_bar:
             while True:
                 chunk_size = self.batch_size - len(self._batch)
@@ -75,7 +75,6 @@ class BulkCreator(Generic[ModelType]):
                 progress_bar.update(len(chunk))
 
     def flush(self) -> None:
-
         if len(self._batch) > 0:
             try:
                 created = self.model.objects.bulk_create(self._batch)

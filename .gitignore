@@ -3,3 +3,5 @@
 Pipfile.lock
 **/.ipynb_checkpoints/*
 .env
+.pytest_cache
+sqldump/

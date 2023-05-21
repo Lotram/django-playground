@@ -28,3 +28,8 @@ exclude = '''
 [tool.isort]
 profile = "black"
 lines_after_imports = 2
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "playground.settings"
+# -- recommended but optional:
+python_files = ["test_*.py", "*_test.py"]

@@ -19,23 +19,36 @@ class Command(BaseCommand):
             "--persons",
             type=int,
             help="Count for persons to create",
-            default=1_000_000,
+            default=10_000,
+        )
+
+        parser.add_argument(
+            "--libraries",
+            type=int,
+            help="Count of libraries to create",
+            default=10,
         )
         parser.add_argument(
             "--books",
             type=int,
             help="Count of books to create",
-            default=2_000,
+            default=2_000_000,
         )
         parser.add_argument(
-            "--readers",
+            "--avg-readers",
             type=int,
             help="average count of readers",
-            default=10_000,
+            default=10,
+        )
+
+        parser.add_argument(
+            "--max-readers",
+            type=int,
+            help="average count of readers",
+            default=100,
         )
 
     def handle(self, *args, **options):
-
         logger.info("starting data generation...")
 
         logger.info(f"adding {options['persons']} persons...")
@@ -51,4 +64,10 @@ class Command(BaseCommand):
 
         logger.info(f"adding {options['books']} books...")
 
-        generate_books(options["books"], options["readers"], persons)
+        generate_books(
+            options["libraries"],
+            options["books"],
+            options["avg_readers"],
+            options["max_readers"],
+            persons,
+        )

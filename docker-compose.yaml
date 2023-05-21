@@ -2,6 +2,11 @@ version: "3"
 
 services:
   postgres:
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: "200M"
+
     # TODO make it possible to specify a custom config file or modify the config with -c
     image: postgres:14-alpine
     environment:
@@ -13,7 +18,7 @@ services:
        - pg-data:/data/postgres
     ports:
       - "127.0.0.1:${DATABASE_PORT}:5432"
-    shm_size: 10g
+    shm_size: 20g
 
 volumes:
   pg-data:
